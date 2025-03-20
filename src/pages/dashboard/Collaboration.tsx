@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -89,8 +90,8 @@ const Collaboration = () => {
       collaborator.expertise.some(exp => exp.toLowerCase().includes(searchQuery.toLowerCase())) ||
       collaborator.industry.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesIndustry = !industryFilter || collaborator.industry === industryFilter;
-    const matchesRole = !roleFilter || collaborator.roles.includes(roleFilter);
+    const matchesIndustry = !industryFilter || industryFilter === 'all' || collaborator.industry === industryFilter;
+    const matchesRole = !roleFilter || roleFilter === 'all' || collaborator.roles.includes(roleFilter);
     
     return matchesSearch && matchesIndustry && matchesRole;
   });

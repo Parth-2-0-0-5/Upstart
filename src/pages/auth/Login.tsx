@@ -1,11 +1,61 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const navigate = useNavigate();
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Hardcoded user credentials
+    const validEmail = 'krishna@email';
+    const validPassword = '123456';
+    
+    if (email === validEmail && password === validPassword) {
+      // Simulate loading
+      setTimeout(() => {
+        setIsLoading(false);
+        
+        // Store user info in localStorage
+        const user = {
+          name: 'Krishna',
+          email: 'krishna@email',
+          role: 'Entrepreneur',
+          startupName: 'Business 1',
+          industry: 'Healthcare'
+        };
+        
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        toast({
+          title: "Login successful",
+          description: "Welcome back, Krishna!",
+        });
+        
+        navigate('/dashboard');
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+        toast({
+          title: "Login failed",
+          description: "Please use krishna@email / 123456",
+          variant: "destructive"
+        });
+      }, 1000);
+    }
+  };
+
   return (
     <Card className="w-full shadow-md">
       <CardHeader>
@@ -15,10 +65,16 @@ const Login = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="name@example.com" />
+            <Input 
+              id="email" 
+              type="text" 
+              placeholder="name@example.com" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -27,14 +83,24 @@ const Login = () => {
                 Forgot password?
               </Link>
             </div>
-            <Input id="password" type="password" />
+            <Input 
+              id="password" 
+              type="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <button 
             type="submit" 
             className="btn-primary w-full"
+            disabled={isLoading}
           >
-            Sign In
+            {isLoading ? "Signing in..." : "Sign In"}
           </button>
+          
+          <div className="p-2 bg-muted/50 rounded-md text-xs text-center">
+            <p>Use <strong>krishna@email</strong> / <strong>123456</strong> to log in</p>
+          </div>
         </form>
         
         <div className="relative my-6">

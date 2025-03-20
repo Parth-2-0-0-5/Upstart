@@ -18,6 +18,7 @@ import Collaboration from "./pages/dashboard/Collaboration";
 import Profile from "./pages/dashboard/Profile";
 import Messages from "./pages/dashboard/Messages";
 import ValuationCalculator from "./pages/dashboard/ValuationCalculator";
+import CompetitorAnalysis from "./pages/dashboard/CompetitorAnalysis";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
@@ -46,10 +47,9 @@ const App = () => (
             <Route path="/matching" element={<MentorMatching />} />
             <Route path="/knowledge-hub" element={<KnowledgeHub />} />
             <Route path="/business-validator" element={<BusinessValidator />} />
-            <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
             <Route path="/collaboration" element={<Collaboration />} />
-            <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/competitor-benchmarking" element={<CompetitorAnalysis />} />
             <Route path="/valuation-calculator" element={<ValuationCalculator />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/messages" element={<Messages />} />

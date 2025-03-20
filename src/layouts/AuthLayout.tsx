@@ -11,7 +11,7 @@ const AuthLayout = () => {
         <div>
           <a href="/" className="flex items-center text-xl font-medium text-white">
             <ArrowLeft className="mr-2 h-5 w-5" />
-            <span>NexusAI</span>
+            <span>Upstart</span>
           </a>
         </div>
         <div className="mb-8">
@@ -21,7 +21,7 @@ const AuthLayout = () => {
         <div className="space-y-8">
           <div className="glass-dark p-4 rounded-lg">
             <p className="text-sm font-medium mb-2">
-              "NexusAI helped me connect with the perfect mentor who transformed my business strategy. The AI tools provided insights I never would have discovered on my own."
+              "Upstart helped me connect with the perfect mentor who transformed my business strategy. The AI tools provided insights I never would have discovered on my own."
             </p>
             <div className="flex items-center">
               <div className="h-10 w-10 rounded-full bg-white/20 mr-3"></div>

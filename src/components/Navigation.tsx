@@ -26,7 +26,7 @@ const Navigation = () => {
       <div className="app-container flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="text-xl font-medium text-foreground">
-            NexusAI
+            Upstart
           </Link>
         </div>
 
