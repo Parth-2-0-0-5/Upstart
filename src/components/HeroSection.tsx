@@ -86,39 +86,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="mt-16 md:mt-24 max-w-5xl mx-auto relative">
-          <div className="aspect-[16/9] rounded-2xl overflow-hidden glass-dark shadow-xl reveal">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 mix-blend-overlay"></div>
-            <div className="relative h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] flex items-center justify-center p-6">
-              <div className="flex flex-wrap justify-center gap-8">
-                {icons.map(({ icon: Icon, delay }, i) => (
-                  <div 
-                    key={i} 
-                    className="glass rounded-2xl p-6 md:p-8 flex flex-col items-center text-center max-w-[280px] reveal"
-                    style={{ animationDelay: `${delay}s` }}
-                  >
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-xl transform scale-75 opacity-50"></div>
-                      <div className="relative bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-full">
-                        <Icon className="h-8 w-8 text-foreground" />
-                      </div>
-                    </div>
-                    <h3 className="text-lg font-medium mb-2">
-                      {i === 0 && "AI-Powered Insights"}
-                      {i === 1 && "Intelligent Networking"}
-                      {i === 2 && "Accelerated Growth"}
-                    </h3>
-                    <p className="text-sm text-foreground/70">
-                      {i === 0 && "Get data-driven recommendations and insights tailored to your business goals"}
-                      {i === 1 && "Connect with the perfect mentors and investors matched by our AI"}
-                      {i === 2 && "Scale faster with smart tools designed for modern entrepreneurs"}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
