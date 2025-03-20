@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -77,81 +76,61 @@ const stages = [
   { id: "established", name: "Established" },
 ];
 
-// Mock API function to validate business
+// Hardcoded business validation results
+const hardcodedResults = {
+  "Recommended_Roadmap": [
+    {
+      "Step_Name": "Market Research",
+      "Step_Description": "Identify target customers, competitors, and trends.",
+      "Sequence_Order": 1,
+      "Dependencies": []
+    },
+    {
+      "Step_Name": "Prototype Development",
+      "Step_Description": "Build an MVP for testing.",
+      "Sequence_Order": 2,
+      "Dependencies": ["Market Research"]
+    },
+    {
+      "Step_Name": "Seek Funding",
+      "Step_Description": "Pitch to investors.",
+      "Sequence_Order": 3,
+      "Dependencies": ["Prototype Development"]
+    }
+  ],
+  "Confidence_Score": 0.8564548228499196
+};
+
+// Mock API function to validate business - now returns hardcoded results
 const validateBusiness = async (data: z.infer<typeof businessFormSchema>) => {
   // Simulate API call with a delay
   await new Promise(resolve => setTimeout(resolve, 2000));
   
-  // Mock response
-  const confidenceScore = data.stage === 'ideation' ? 65 : 
-                          data.stage === 'prototype' ? 72 : 
-                          data.stage === 'mvp' ? 78 : 
-                          data.stage === 'scaling' ? 85 : 90;
+  // Convert hardcoded results to the format expected by the UI
+  const confidenceScore = Math.round(hardcodedResults.Confidence_Score * 100);
   
   return {
     confidenceScore,
-    roadmap: [
-      {
-        id: "1",
-        title: "Market Research & Validation",
-        description: "Conduct thorough market research to validate your business idea and identify target audience.",
-        timeframe: "2-4 weeks",
-        completed: data.stage !== 'ideation' ? true : false,
-      },
-      {
-        id: "2",
-        title: "Business Plan Development",
-        description: "Create a comprehensive business plan outlining your strategy, financials, and operations.",
-        timeframe: "3-5 weeks",
-        completed: ['prototype', 'mvp', 'scaling', 'established'].includes(data.stage),
-      },
-      {
-        id: "3",
-        title: "MVP Development",
-        description: "Build a minimum viable product to test core functionality with early adopters.",
-        timeframe: "8-12 weeks",
-        completed: ['mvp', 'scaling', 'established'].includes(data.stage),
-      },
-      {
-        id: "4",
-        title: "Customer Acquisition Strategy",
-        description: "Develop and implement a strategy to acquire your first customers.",
-        timeframe: "4-6 weeks",
-        completed: ['scaling', 'established'].includes(data.stage),
-      },
-      {
-        id: "5",
-        title: "Securing Initial Funding",
-        description: "Pitch to investors or secure other funding sources to support growth.",
-        timeframe: "8-16 weeks",
-        completed: ['established'].includes(data.stage),
-      },
-    ],
+    roadmap: hardcodedResults.Recommended_Roadmap.map((step, index) => ({
+      id: (index + 1).toString(),
+      title: step.Step_Name,
+      description: step.Step_Description,
+      timeframe: `${2 + index}-${4 + index} weeks`,
+      completed: index === 0 // First step is completed
+    })),
     dependencies: [
       {
         id: "1",
         from: "1",
         to: "2",
-        description: "Market research must inform business plan",
+        description: "Market research must inform prototype development"
       },
       {
         id: "2",
         from: "2",
         to: "3",
-        description: "Business plan must be completed before MVP development",
-      },
-      {
-        id: "3",
-        from: "3",
-        to: "4",
-        description: "MVP is required for customer acquisition",
-      },
-      {
-        id: "4",
-        from: "4",
-        to: "5",
-        description: "Initial customer traction helps secure funding",
-      },
+        description: "Prototype must be developed before seeking funding"
+      }
     ],
   };
 };

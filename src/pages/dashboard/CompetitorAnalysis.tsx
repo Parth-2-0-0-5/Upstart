@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,79 +39,19 @@ const initialInputs: CompetitorInputs = {
   employeeCount: ''
 };
 
-// Mock data for the competitor analysis
-const generateMockCompetitors = (inputs: CompetitorInputs): CompetitorData[] => {
-  // Generate random but somewhat realistic data based on inputs
-  const competitors: CompetitorData[] = [];
-  
-  const businessNames = [
-    'Healthwave Solutions', 'MedTech Innovations', 'Vitality Care', 
-    'Wellness Frontier', 'CuraHealth', 'MediNova', 'LifeSpan Health',
-    'RegenMed', 'BioCura', 'NexusHealth', 'PrimeVital', 'OptimaCare'
-  ];
-  
-  const websites = [
-    'healthwave.io', 'medtechinno.com', 'vitalitycare.co', 
-    'wellnessfrontier.com', 'curahealth.org', 'medinova.health', 
-    'lifespanhealth.net', 'regenmed.co', 'biocura.health', 
-    'nexushealth.com', 'primevital.org', 'optimacare.health'
-  ];
-  
-  const locations = [
-    'San Francisco, CA', 'Boston, MA', 'New York, NY', 
-    'Austin, TX', 'Seattle, WA', 'Chicago, IL', 
-    'Los Angeles, CA', 'Denver, CO', 'Miami, FL',
-    'Nashville, TN', 'Portland, OR', 'Atlanta, GA'
-  ];
-  
-  const pricingModels = [
-    'Subscription', 'Freemium', 'Per User', 'Tiered', 
-    'Usage-Based', 'One-Time Purchase', 'Enterprise'
-  ];
-  
-  const marketPositions = [
-    'Market Leader', 'Fast-Growing', 'Innovator', 'Niche Player',
-    'Challenger', 'Emerging', 'Established'
-  ];
-  
-  // Use the inputs to generate somewhat tailored results
-  const inputIndustry = inputs.industry || 'Healthcare';
-  const inputLocation = inputs.location || '';
-  const inputPricingModel = inputs.pricingModel || '';
-  const inputMarketPosition = inputs.marketPosition || '';
-  const inputRevenue = inputs.revenue ? parseInt(inputs.revenue, 10) : 0;
-  const inputEmployeeCount = inputs.employeeCount ? parseInt(inputs.employeeCount, 10) : 0;
-  
-  for (let i = 0; i < 6; i++) {
-    const revenueMultiplier = 0.7 + Math.random() * 0.6; // 70% to 130% of input
-    const employeeMultiplier = 0.8 + Math.random() * 0.4; // 80% to 120% of input
-    
-    // Determine revenue based on input or default range
-    const revenue = inputRevenue 
-      ? Math.round(inputRevenue * revenueMultiplier) 
-      : Math.round((5 + Math.random() * 20) * 1000000); // $5M-$25M
-    
-    // Determine employee count based on input or default range
-    const employeeCount = inputEmployeeCount 
-      ? Math.round(inputEmployeeCount * employeeMultiplier) 
-      : Math.round(20 + Math.random() * 180); // 20-200 employees
-    
-    competitors.push({
-      "Business Name": businessNames[i],
-      "Industry": inputIndustry,
-      "Location": inputLocation || locations[i % locations.length],
-      "Website": websites[i],
-      "Social Media Followers": Math.round(1000 + Math.random() * 99000),
-      "Avg Customer Rating": 3.0 + Math.random() * 2.0, // 3.0-5.0
-      "Sentiment Score": 0.5 + Math.random() * 0.5, // 0.5-1.0
-      "Pricing Model": inputPricingModel || pricingModels[i % pricingModels.length],
-      "Market Position": inputMarketPosition || marketPositions[i % marketPositions.length],
-      "Revenue": revenue,
-      "Employee Count": employeeCount
-    });
-  }
-  
-  return competitors;
+// Hardcoded competitor data
+const hardcodedCompetitor: CompetitorData = {
+  "Business Name": "Business_1",
+  "Industry": "E-commerce",
+  "Location": "Germany",
+  "Website": "www.business_1.com",
+  "Social Media Followers": 334029,
+  "Avg Customer Rating": 3.1,
+  "Sentiment Score": -0.06,
+  "Pricing Model": "Freemium",
+  "Market Position": "Leader",
+  "Revenue": 14847316.15,
+  "Employee Count": 1248
 };
 
 const CompetitorAnalysis = () => {
@@ -135,14 +74,14 @@ const CompetitorAnalysis = () => {
     // Simulate API call delay
     setTimeout(() => {
       try {
-        const results = generateMockCompetitors(inputs);
-        setCompetitors(results);
+        // Use hardcoded data instead of generating based on inputs
+        setCompetitors([hardcodedCompetitor]);
         setHasSearched(true);
         setIsLoading(false);
         
         toast({
           title: "Analysis Complete",
-          description: `Found ${results.length} competitors matching your criteria.`,
+          description: "Found 1 competitor matching your criteria.",
         });
       } catch (error) {
         setIsLoading(false);
@@ -432,8 +371,8 @@ const CompetitorAnalysis = () => {
                         <div className="text-xs text-muted-foreground mb-1">Sentiment Analysis</div>
                         <div className="w-full bg-muted rounded-full h-2">
                           <div 
-                            className="bg-emerald-500 h-2 rounded-full" 
-                            style={{ width: `${competitor["Sentiment Score"] * 100}%` }}
+                            className={`${competitor["Sentiment Score"] < 0 ? 'bg-rose-500' : 'bg-emerald-500'} h-2 rounded-full`}
+                            style={{ width: `${Math.abs(competitor["Sentiment Score"] * 100)}%` }}
                           ></div>
                         </div>
                         <div className="flex justify-between text-xs mt-1">

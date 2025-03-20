@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,7 +20,18 @@ interface ValuationFormValues {
 const ValuationCalculator = () => {
   const { toast } = useToast();
   const [valuation, setValuation] = useState<number | null>(null);
-  const [multiplierFactors, setMultiplierFactors] = useState<Record<string, number>>({});
+  const [multiplierFactors, setMultiplierFactors] = useState<Record<string, number>>({
+    'SaaS': 10,
+    'FinTech': 8,
+    'E-commerce': 4,
+    'Healthcare': 7,
+    'CleanTech': 6,
+    'AI & ML': 12,
+    'Consumer Products': 3,
+    'Marketplace': 5,
+    'EdTech': 5,
+    'Other': 4,
+  });
   
   const form = useForm<ValuationFormValues>({
     defaultValues: {
@@ -33,77 +43,18 @@ const ValuationCalculator = () => {
     },
   });
   
-  // Industry-specific multipliers (simplified for demo purposes)
-  useEffect(() => {
-    const factors: Record<string, number> = {
-      'SaaS': 10,
-      'FinTech': 8,
-      'E-commerce': 4,
-      'Healthcare': 7,
-      'CleanTech': 6,
-      'AI & ML': 12,
-      'Consumer Products': 3,
-      'Marketplace': 5,
-      'EdTech': 5,
-      'Other': 4,
-    };
-    
-    setMultiplierFactors(factors);
-  }, []);
-  
-  // Mock valuation calculation (simplified for demo purposes)
-  const calculateValuation = (data: ValuationFormValues) => {
-    // Base multiplier from industry
-    const industryMultiplier = multiplierFactors[data.industry] || 4;
-    
-    // Funding stage affects multiplier
-    let stageMultiplier = 1;
-    switch(data.fundingStage) {
-      case 'pre-seed':
-        stageMultiplier = 0.8;
-        break;
-      case 'seed':
-        stageMultiplier = 1;
-        break;
-      case 'series-a':
-        stageMultiplier = 1.5;
-        break;
-      case 'series-b':
-        stageMultiplier = 2;
-        break;
-      case 'series-c-plus':
-        stageMultiplier = 2.5;
-        break;
-      default:
-        stageMultiplier = 1;
-    }
-    
-    // Investors count effect
-    const investorsFactor = 1 + (data.investorsCount * 0.02);
-    
-    // Revenue is a key component
-    const baseValuation = data.revenue * industryMultiplier * stageMultiplier * investorsFactor;
-    
-    // Previous funding also factors in
-    const fundingEffect = data.fundingReceived * 1.5;
-    
-    // Final valuation
-    const calculatedValuation = baseValuation + fundingEffect;
-    
-    return Math.round(calculatedValuation * 1000) / 1000; // Round to 3 decimal places
-  };
+  // Hardcoded valuation result
+  const hardcodedValuation = 3500000;
   
   const onSubmit = (data: ValuationFormValues) => {
-    const calculatedValuation = calculateValuation(data);
-    setValuation(calculatedValuation);
+    // Use hardcoded valuation instead of calculating
+    setValuation(hardcodedValuation);
     
     // Show success toast
     toast({
       title: 'Valuation Calculated',
-      description: `Your startup's estimated valuation is $${calculatedValuation.toLocaleString()}.`,
+      description: `Your startup's estimated valuation is $${hardcodedValuation.toLocaleString()}.`,
     });
-    
-    // In a real app, you would save this to the user's profile/dashboard
   };
   
   const formatCurrency = (value: number) => {

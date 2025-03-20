@@ -3,7 +3,7 @@ import React from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Search, User, Briefcase, DollarSign, Clock, Award } from 'lucide-react';
+import { Search, User, Briefcase, DollarSign, Clock, Award, LinkedinIcon } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 
 import { Button } from "@/components/ui/button";
@@ -70,47 +70,35 @@ const roles = [
   { id: "mentor", name: "Mentor" },
 ];
 
-// Mock API function to fetch mentors
-const fetchMentors = async (filters: z.infer<typeof mentorFormSchema>) => {
+// Hardcoded mentor data
+const hardcodedMentors = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=128&h=128&auto=format&fit=crop",
+    experienceYears: 10,
+    industry: "FinTech",
+    matchScore: 94,
+    description: "Scaling Startups, Fundraising",
+    linkedin: "linkedin.com/in/alicejohnson"
+  },
+  {
+    id: "2",
+    name: "David Smith",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=128&h=128&auto=format&fit=crop",
+    experienceYears: 8,
+    industry: "HealthTech",
+    matchScore: 89,
+    description: "Product Development, Market Strategy",
+    linkedin: "linkedin.com/in/davidsmith"
+  }
+];
+
+// Mock API function to fetch mentors - now returns hardcoded data
+const fetchMentors = async () => {
   // Simulate API call with a delay
   await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  // Mock data
-  return [
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=128&h=128&auto=format&fit=crop",
-      experienceYears: 12,
-      industry: "tech",
-      matchScore: 92,
-      description: "Former CTO at a unicorn startup with expertise in scaling technology teams.",
-    },
-    {
-      id: "2",
-      name: "Michael Chen",
-      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=128&h=128&auto=format&fit=crop",
-      experienceYears: 8,
-      industry: "finance",
-      matchScore: 87,
-      description: "Venture capitalist with extensive portfolio in fintech and blockchain startups.",
-    },
-    {
-      id: "3",
-      name: "Priya Patel",
-      avatarUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=128&h=128&auto=format&fit=crop",
-      experienceYears: 15,
-      industry: "healthcare",
-      matchScore: 95,
-      description: "Healthcare innovator who has launched three successful medtech companies.",
-    },
-  ].filter(mentor => {
-    // Apply filters
-    return (
-      mentor.experienceYears >= filters.experience &&
-      (filters.industry === 'all' || mentor.industry === filters.industry)
-    );
-  });
+  return hardcodedMentors;
 };
 
 const MentorMatching = () => {
@@ -136,8 +124,8 @@ const MentorMatching = () => {
   
   // Query for mentor data
   const { data: mentors, isLoading, refetch } = useQuery({
-    queryKey: ['mentors', form.getValues()],
-    queryFn: () => fetchMentors(form.getValues()),
+    queryKey: ['mentors'],
+    queryFn: fetchMentors,
     enabled: false,
   });
 
@@ -309,10 +297,10 @@ const MentorMatching = () => {
                       <CardTitle>{mentor.name}</CardTitle>
                       <CardDescription className="flex items-center mt-1">
                         <Briefcase className="h-4 w-4 mr-1" />
-                        {industries.find(i => i.id === mentor.industry)?.name || mentor.industry}
+                        {mentor.industry}
                         <span className="mx-2">•</span>
                         <Clock className="h-4 w-4 mr-1" />
-                        {mentor.experienceYears} years experience
+                        {mentor.experienceYears}+ years experience
                       </CardDescription>
                     </div>
                     <div className="flex-shrink-0 text-right">
@@ -329,6 +317,12 @@ const MentorMatching = () => {
                     <div className="mt-4">
                       <div className="text-xs text-muted-foreground mb-1">Expertise Match</div>
                       <Progress value={mentor.matchScore} className="h-2" />
+                    </div>
+                    <div className="mt-3 flex items-center text-sm text-muted-foreground">
+                      <LinkedinIcon className="h-4 w-4 mr-1" />
+                      <a href={`https://${mentor.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        {mentor.linkedin}
+                      </a>
                     </div>
                   </CardContent>
                   
