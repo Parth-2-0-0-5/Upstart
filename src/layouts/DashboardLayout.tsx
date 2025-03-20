@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { 
   Home, User, MessageSquare, BookOpen, 
   BarChart2, DollarSign, Search, Users, 
-  FileCheck, Scale, Calculator, Menu, X 
+  FileCheck, Calculator, Menu, X 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -20,7 +19,6 @@ const DashboardLayout = () => {
     { name: 'Pitch Evaluator', href: '/pitch-evaluator', icon: BarChart2 },
     { name: 'Collaboration', href: '/collaboration', icon: Users },
     { name: 'Competitor Analysis', href: '/competitor-benchmarking', icon: Search },
-    { name: 'Legal Checker', href: '/legal-checker', icon: Scale },
     { name: 'Valuation Calculator', href: '/valuation-calculator', icon: Calculator },
     { name: 'Messages', href: '/messages', icon: MessageSquare },
     { name: 'Profile', href: '/profile', icon: User }

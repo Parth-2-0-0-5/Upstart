@@ -45,7 +45,6 @@ const App = () => (
             <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
             <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/legal-checker" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/valuation-calculator" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/profile" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/messages" element={<Dashboard />} /> {/* Placeholder */}

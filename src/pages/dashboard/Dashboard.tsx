@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, BookOpen, Users, FileCheck, BarChart2, Search, Scale, Calculator } from 'lucide-react';
+import { ArrowRight, BookOpen, Users, FileCheck, BarChart2, Search, Calculator } from 'lucide-react';
 
 const Dashboard = () => {
   const tools = [
@@ -10,7 +9,6 @@ const Dashboard = () => {
     { name: 'Business Validator', description: 'Validate your business model with AI', icon: FileCheck, href: '/business-validator' },
     { name: 'Pitch Evaluator', description: 'Get AI feedback on your pitch deck', icon: BarChart2, href: '/pitch-evaluator' },
     { name: 'Competitor Analysis', description: 'Compare your startup against competitors', icon: Search, href: '/competitor-benchmarking' },
-    { name: 'Legal Compliance', description: 'Check your legal compliance', icon: Scale, href: '/legal-checker' },
     { name: 'Valuation Calculator', description: 'Estimate your startup\'s valuation', icon: Calculator, href: '/valuation-calculator' },
   ];
 

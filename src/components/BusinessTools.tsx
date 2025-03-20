@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, FileCheck, CreditCard, BarChart, Target, Scale, LineChart } from 'lucide-react';
+import { ArrowRight, FileCheck, CreditCard, BarChart, Target, LineChart } from 'lucide-react';
 
 const ToolCard = ({ icon: Icon, title, description, active }: {
   icon: React.ElementType;
@@ -52,11 +51,6 @@ const ToolDemo = ({ activeIndex }: { activeIndex: number }) => {
       title: "Pitch Deck Evaluator",
       description: "AI feedback on your investor presentations",
       icon: Target
-    },
-    {
-      title: "Legal Compliance Checker",
-      description: "Verifies your business meets legal requirements",
-      icon: Scale
     },
     {
       title: "Startup Valuation Calculator",
@@ -193,41 +187,6 @@ const ToolDemo = ({ activeIndex }: { activeIndex: number }) => {
         
         {activeIndex === 4 && (
           <div className="space-y-3">
-            <h4 className="font-medium">Legal Compliance Checker</h4>
-            <div className="space-y-2">
-              <div className="flex items-center text-sm">
-                <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Business Registration</span>
-              </div>
-              <div className="flex items-center text-sm">
-                <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Tax ID Setup</span>
-              </div>
-              <div className="flex items-center text-sm">
-                <svg className="h-5 w-5 text-red-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span>Data Privacy Policy</span>
-              </div>
-              <div className="flex items-center text-sm">
-                <svg className="h-5 w-5 text-yellow-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span>Employment Contracts</span>
-              </div>
-            </div>
-            <div className="text-sm p-2 bg-secondary/50 rounded-lg mt-2">
-              <span className="font-medium">Action Required:</span> Update your data privacy policy to comply with regulations.
-            </div>
-          </div>
-        )}
-        
-        {activeIndex === 5 && (
-          <div className="space-y-3">
             <h4 className="font-medium">Startup Valuation Calculator</h4>
             <div className="text-center py-4">
               <div className="text-3xl font-bold text-primary">$2.4M - $3.2M</div>
@@ -278,11 +237,6 @@ const BusinessTools = () => {
       title: "Pitch Deck Evaluator",
       description: "AI feedback on your investor presentations",
       icon: Target
-    },
-    {
-      title: "Legal Compliance Checker",
-      description: "Verifies your business meets legal requirements",
-      icon: Scale
     },
     {
       title: "Startup Valuation Calculator",
