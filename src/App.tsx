@@ -10,6 +10,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ResetPassword from "./pages/auth/ResetPassword";
 import Dashboard from "./pages/dashboard/Dashboard";
+import PitchEvaluator from "./pages/dashboard/PitchEvaluator";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
@@ -39,7 +40,7 @@ const App = () => (
             <Route path="/knowledge-hub" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/business-validator" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/pitch-evaluator" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
             <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/legal-checker" element={<Dashboard />} /> {/* Placeholder */}
