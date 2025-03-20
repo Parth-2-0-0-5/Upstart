@@ -15,49 +15,46 @@ import MentorMatching from "./pages/dashboard/MentorMatching";
 import BusinessValidator from "./pages/dashboard/BusinessValidator";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
-import { ThemeProvider } from "./contexts/ThemeContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Index />} />
-            
-            {/* Auth Routes */}
-            <Route element={<AuthLayout />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-            </Route>
-            
-            {/* Protected Dashboard Routes */}
-            <Route element={<DashboardLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/matching" element={<MentorMatching />} />
-              <Route path="/knowledge-hub" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/business-validator" element={<BusinessValidator />} />
-              <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
-              <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/valuation-calculator" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/profile" element={<Dashboard />} /> {/* Placeholder */}
-              <Route path="/messages" element={<Dashboard />} /> {/* Placeholder */}
-            </Route>
-            
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Index />} />
+          
+          {/* Auth Routes */}
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+          </Route>
+          
+          {/* Protected Dashboard Routes */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/matching" element={<MentorMatching />} />
+            <Route path="/knowledge-hub" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/business-validator" element={<BusinessValidator />} />
+            <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
+            <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/valuation-calculator" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/profile" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/messages" element={<Dashboard />} /> {/* Placeholder */}
+          </Route>
+          
+          {/* Catch-all route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
