@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { 
@@ -6,6 +7,7 @@ import {
   FileCheck, Calculator, Menu, X 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -84,6 +86,7 @@ const DashboardLayout = () => {
             </button>
             
             <div className="flex-1 flex justify-end items-center space-x-4">
+              <ThemeToggle />
               <button className="p-2 rounded-md hover:bg-accent">
                 <MessageSquare className="h-5 w-5" />
               </button>

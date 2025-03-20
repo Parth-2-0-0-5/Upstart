@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,7 +21,7 @@ const Navigation = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out w-full",
-        scrolled ? "bg-white/80 backdrop-blur-lg border-b border-border/50 py-4" : "bg-transparent py-6"
+        scrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-border/50 py-4" : "bg-transparent py-6"
       )}
     >
       <div className="app-container flex items-center justify-between">
@@ -49,6 +50,7 @@ const Navigation = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           <Link to="/login" className="text-sm font-medium text-foreground/80 hover:text-foreground">
             Sign In
           </Link>
