@@ -1,27 +1,31 @@
+
 import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { 
   Home, User, MessageSquare, BookOpen, 
   BarChart2, DollarSign, Search, Users, 
-  FileCheck, Calculator, Menu, X 
+  FileCheck, Calculator, Menu, X, Bell 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
+
+  // Mock unread messages count
+  const unreadMessages = 2;
 
   const navItems = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
     { name: 'Mentors & Investors', href: '/matching', icon: Users },
     { name: 'Knowledge Hub', href: '/knowledge-hub', icon: BookOpen },
     { name: 'Business Validator', href: '/business-validator', icon: FileCheck },
-    { name: 'Investor Analysis', href: '/investor-analysis', icon: DollarSign },
-    { name: 'Pitch Evaluator', href: '/pitch-evaluator', icon: BarChart2 },
     { name: 'Collaboration', href: '/collaboration', icon: Users },
+    { name: 'Pitch Evaluator', href: '/pitch-evaluator', icon: BarChart2 },
     { name: 'Competitor Analysis', href: '/competitor-benchmarking', icon: Search },
     { name: 'Valuation Calculator', href: '/valuation-calculator', icon: Calculator },
-    { name: 'Messages', href: '/messages', icon: MessageSquare },
-    { name: 'Profile', href: '/profile', icon: User }
   ];
 
   return (
@@ -48,14 +52,19 @@ const DashboardLayout = () => {
           
           <nav className="space-y-1.5 flex-1 overflow-y-auto">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                className="flex items-center px-3 py-2.5 text-sm font-medium rounded-md hover:bg-accent group"
+                to={item.href}
+                className={cn(
+                  "flex items-center px-3 py-2.5 text-sm font-medium rounded-md group",
+                  location.pathname === item.href
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-accent"
+                )}
               >
                 <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
           
@@ -84,18 +93,26 @@ const DashboardLayout = () => {
             </button>
             
             <div className="flex-1 flex justify-end items-center space-x-4">
-              <button className="p-2 rounded-md hover:bg-accent">
+              <Link to="/messages" className="p-2 rounded-md hover:bg-accent relative">
                 <MessageSquare className="h-5 w-5" />
-              </button>
-              <button className="p-2 rounded-md hover:bg-accent">
+                {unreadMessages > 0 && (
+                  <Badge 
+                    variant="destructive" 
+                    className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center"
+                  >
+                    {unreadMessages}
+                  </Badge>
+                )}
+              </Link>
+              <Link to="/profile" className="p-2 rounded-md hover:bg-accent">
                 <User className="h-5 w-5" />
-              </button>
+              </Link>
             </div>
           </div>
         </header>
         
         {/* Page content */}
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto">
           <Outlet />
         </main>
       </div>

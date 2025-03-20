@@ -13,6 +13,11 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import PitchEvaluator from "./pages/dashboard/PitchEvaluator";
 import MentorMatching from "./pages/dashboard/MentorMatching";
 import BusinessValidator from "./pages/dashboard/BusinessValidator";
+import KnowledgeHub from "./pages/dashboard/KnowledgeHub";
+import Collaboration from "./pages/dashboard/Collaboration";
+import Profile from "./pages/dashboard/Profile";
+import Messages from "./pages/dashboard/Messages";
+import ValuationCalculator from "./pages/dashboard/ValuationCalculator";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
@@ -39,15 +44,15 @@ const App = () => (
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/matching" element={<MentorMatching />} />
-            <Route path="/knowledge-hub" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/knowledge-hub" element={<KnowledgeHub />} />
             <Route path="/business-validator" element={<BusinessValidator />} />
             <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
-            <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/collaboration" element={<Collaboration />} />
             <Route path="/competitor-benchmarking" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/valuation-calculator" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/profile" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/messages" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/valuation-calculator" element={<ValuationCalculator />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/messages" element={<Messages />} />
           </Route>
           
           {/* Catch-all route */}
