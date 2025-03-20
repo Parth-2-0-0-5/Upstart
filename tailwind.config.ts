@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -70,26 +71,78 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+                'fade-in': {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' }
+                },
+                'fade-up': {
+                    '0%': { opacity: '0', transform: 'translateY(10px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' }
+                },
+                'fade-down': {
+                    '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' }
+                },
+                'fade-left': {
+                    '0%': { opacity: '0', transform: 'translateX(10px)' },
+                    '100%': { opacity: '1', transform: 'translateX(0)' }
+                },
+                'fade-right': {
+                    '0%': { opacity: '0', transform: 'translateX(-10px)' },
+                    '100%': { opacity: '1', transform: 'translateX(0)' }
+                },
+                'scale-in': {
+                    '0%': { opacity: '0', transform: 'scale(0.95)' },
+                    '100%': { opacity: '1', transform: 'scale(1)' }
+                },
+                'blur-in': {
+                    '0%': { opacity: '0', filter: 'blur(4px)' },
+                    '100%': { opacity: '1', filter: 'blur(0)' }
+                },
+                'float': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-5px)' }
+                },
+                'pulse-subtle': {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.85' }
+                },
+                'spin-slow': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' }
+                },
+                'gradient-shift': {
+                    '0%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                    '100%': { backgroundPosition: '0% 50%' }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'fade-in': 'fade-in 0.7s ease-out forwards',
+                'fade-up': 'fade-up 0.7s ease-out forwards',
+                'fade-down': 'fade-down 0.7s ease-out forwards',
+                'fade-left': 'fade-left 0.7s ease-out forwards',
+                'fade-right': 'fade-right 0.7s ease-out forwards',
+                'scale-in': 'scale-in 0.7s ease-out forwards',
+                'blur-in': 'blur-in 0.7s ease-out forwards',
+                'float': 'float 3s ease-in-out infinite',
+                'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+                'spin-slow': 'spin-slow 12s linear infinite',
+                'gradient-shift': 'gradient-shift 8s ease infinite'
+			},
+            fontFamily: {
+                sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                display: ['SF Pro Display', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+            },
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
