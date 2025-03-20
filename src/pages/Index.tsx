@@ -22,6 +22,7 @@ const Index = () => {
     <div className="min-h-screen overflow-x-hidden">
       <Navigation />
       <main>
+        <HeroSection/>
         <FeaturesSection/>
         <AIMatchingSection />
         <KnowledgeHub />
