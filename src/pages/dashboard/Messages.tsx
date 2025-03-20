@@ -20,7 +20,7 @@ const mockConversations = [
       role: 'Entrepreneur',
     },
     lastMessage: {
-      text: 'I'd love to discuss your startup idea further. When are you free for a call?',
+      text: "I'd love to discuss your startup idea further. When are you free for a call?",
       time: new Date(2023, 9, 25, 14, 30),
       read: true,
       sender: 'them',
@@ -36,7 +36,7 @@ const mockConversations = [
       role: 'Investor',
     },
     lastMessage: {
-      text: 'Your pitch deck looks promising. Let's schedule a meeting next week.',
+      text: "Your pitch deck looks promising. Let's schedule a meeting next week.",
       time: new Date(2023, 9, 24, 10, 15),
       read: false,
       sender: 'them',
@@ -52,7 +52,7 @@ const mockConversations = [
       role: 'Mentor',
     },
     lastMessage: {
-      text: 'Thanks for the update on your progress. I'm glad to hear things are going well.',
+      text: "Thanks for the update on your progress. I'm glad to hear things are going well.",
       time: new Date(2023, 9, 23, 16, 45),
       read: true,
       sender: 'you',
@@ -82,25 +82,25 @@ const mockConversations = [
 const mockMessages = [
   {
     id: 1,
-    text: 'Hi there! I saw your startup profile and I'm really impressed with what you're building.',
+    text: "Hi there! I saw your startup profile and I'm really impressed with what you're building.",
     time: new Date(2023, 9, 24, 9, 30),
     sender: 'them',
   },
   {
     id: 2,
-    text: 'Thank you! I've been working on it for about 6 months now.',
+    text: "Thank you! I've been working on it for about 6 months now.",
     time: new Date(2023, 9, 24, 9, 32),
     sender: 'you',
   },
   {
     id: 3,
-    text: 'That's impressive progress. I'm actually an angel investor looking for opportunities in your industry.',
+    text: "That's impressive progress. I'm actually an angel investor looking for opportunities in your industry.",
     time: new Date(2023, 9, 24, 9, 35),
     sender: 'them',
   },
   {
     id: 4,
-    text: 'That sounds great! I'd love to share more about our traction and plans.',
+    text: "That sounds great! I'd love to share more about our traction and plans.",
     time: new Date(2023, 9, 24, 9, 38),
     sender: 'you',
   },
@@ -112,13 +112,13 @@ const mockMessages = [
   },
   {
     id: 6,
-    text: 'Absolutely! I'll email you the deck shortly. I'm available Monday and Tuesday afternoons for a call.',
+    text: "Absolutely! I'll email you the deck shortly. I'm available Monday and Tuesday afternoons for a call.",
     time: new Date(2023, 9, 24, 9, 48),
     sender: 'you',
   },
   {
     id: 7,
-    text: 'Your pitch deck looks promising. Let's schedule a meeting next week.',
+    text: "Your pitch deck looks promising. Let's schedule a meeting next week.",
     time: new Date(2023, 9, 24, 10, 15),
     sender: 'them',
   },
