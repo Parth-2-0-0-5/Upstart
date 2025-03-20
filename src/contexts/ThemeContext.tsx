@@ -4,12 +4,14 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 type ThemeContextType = {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  themeChangePos: { x: number, y: number } | null;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [themeChangePos, setThemeChangePos] = useState<{ x: number, y: number } | null>(null);
 
   useEffect(() => {
     // Check if user has a theme preference in localStorage
@@ -33,8 +35,18 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode, themeChangePos }}>
       {children}
+      {themeChangePos && (
+        <div
+          className="theme-transition-circle fixed pointer-events-none z-[9999]"
+          style={{
+            top: themeChangePos.y,
+            left: themeChangePos.x,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
     </ThemeContext.Provider>
   );
 };
