@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ const mockConversations = [
       text: "I'd love to discuss your startup idea further. When are you free for a call?",
       time: new Date(2023, 9, 25, 14, 30),
       read: true,
-      sender: 'them',
+      sender: 'them' as const,
     },
     unread: 0,
   },
@@ -39,7 +38,7 @@ const mockConversations = [
       text: "Your pitch deck looks promising. Let's schedule a meeting next week.",
       time: new Date(2023, 9, 24, 10, 15),
       read: false,
-      sender: 'them',
+      sender: 'them' as const,
     },
     unread: 2,
   },
@@ -55,7 +54,7 @@ const mockConversations = [
       text: "Thanks for the update on your progress. I'm glad to hear things are going well.",
       time: new Date(2023, 9, 23, 16, 45),
       read: true,
-      sender: 'you',
+      sender: 'you' as const,
     },
     unread: 0,
   },
@@ -71,7 +70,7 @@ const mockConversations = [
       text: 'Would you be interested in collaborating on a project together?',
       time: new Date(2023, 9, 22, 9, 30),
       read: true,
-      sender: 'them',
+      sender: 'them' as const,
     },
     unread: 0,
     isNew: true,
@@ -84,43 +83,43 @@ const mockMessages = [
     id: 1,
     text: "Hi there! I saw your startup profile and I'm really impressed with what you're building.",
     time: new Date(2023, 9, 24, 9, 30),
-    sender: 'them',
+    sender: 'them' as const,
   },
   {
     id: 2,
     text: "Thank you! I've been working on it for about 6 months now.",
     time: new Date(2023, 9, 24, 9, 32),
-    sender: 'you',
+    sender: 'you' as const,
   },
   {
     id: 3,
     text: "That's impressive progress. I'm actually an angel investor looking for opportunities in your industry.",
     time: new Date(2023, 9, 24, 9, 35),
-    sender: 'them',
+    sender: 'them' as const,
   },
   {
     id: 4,
     text: "That sounds great! I'd love to share more about our traction and plans.",
     time: new Date(2023, 9, 24, 9, 38),
-    sender: 'you',
+    sender: 'you' as const,
   },
   {
     id: 5,
     text: 'Perfect. Could you send over your pitch deck? And maybe we can schedule a call next week?',
     time: new Date(2023, 9, 24, 9, 45),
-    sender: 'them',
+    sender: 'them' as const,
   },
   {
     id: 6,
     text: "Absolutely! I'll email you the deck shortly. I'm available Monday and Tuesday afternoons for a call.",
     time: new Date(2023, 9, 24, 9, 48),
-    sender: 'you',
+    sender: 'you' as const,
   },
   {
     id: 7,
     text: "Your pitch deck looks promising. Let's schedule a meeting next week.",
     time: new Date(2023, 9, 24, 10, 15),
-    sender: 'them',
+    sender: 'them' as const,
   },
 ];
 
@@ -163,7 +162,7 @@ const Messages = () => {
   const handleSelectConversation = (conversation: Conversation) => {
     setActiveConversation(conversation);
     // In a real app, you would fetch messages from the backend
-    setMessages(mockMessages);
+    setMessages(mockMessages as Message[]);
   };
   
   const handleSendMessage = () => {
