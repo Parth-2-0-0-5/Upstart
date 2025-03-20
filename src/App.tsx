@@ -11,6 +11,8 @@ import Register from "./pages/auth/Register";
 import ResetPassword from "./pages/auth/ResetPassword";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PitchEvaluator from "./pages/dashboard/PitchEvaluator";
+import MentorMatching from "./pages/dashboard/MentorMatching";
+import BusinessValidator from "./pages/dashboard/BusinessValidator";
 import AuthLayout from "./layouts/AuthLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
@@ -36,9 +38,9 @@ const App = () => (
           {/* Protected Dashboard Routes */}
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/matching" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/matching" element={<MentorMatching />} />
             <Route path="/knowledge-hub" element={<Dashboard />} /> {/* Placeholder */}
-            <Route path="/business-validator" element={<Dashboard />} /> {/* Placeholder */}
+            <Route path="/business-validator" element={<BusinessValidator />} />
             <Route path="/investor-analysis" element={<Dashboard />} /> {/* Placeholder */}
             <Route path="/pitch-evaluator" element={<PitchEvaluator />} />
             <Route path="/collaboration" element={<Dashboard />} /> {/* Placeholder */}
