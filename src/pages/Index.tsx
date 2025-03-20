@@ -23,7 +23,7 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <FeaturesSection />
+        
         <AIMatchingSection />
         <KnowledgeHub />
         <BusinessTools />
