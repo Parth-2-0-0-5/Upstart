@@ -54,20 +54,20 @@ const mentorFormSchema = z.object({
 // Industry options
 const industries = [
   { id: "tech", name: "Technology" },
+  { id: "e-commerce", name: "E-Commerce" },
+  { id: "blockchain", name: "Blockchain" },
+  { id: "education", name: "Education" },
+  { id: "AI", name: "AI" },
   { id: "finance", name: "Finance" },
   { id: "healthcare", name: "Healthcare" },
-  { id: "education", name: "Education" },
-  { id: "retail", name: "Retail" },
-  { id: "manufacturing", name: "Manufacturing" },
-  { id: "energy", name: "Energy" },
-  { id: "transportation", name: "Transportation" },
 ];
 
 // Role options
 const roles = [
   { id: "newbie", name: "Newbie" },
-  { id: "intermediate", name: "Intermediate" },
-  { id: "expert", name: "Expert" },
+  { id: "entrepreneur", name: "Entrepreneur" },
+  { id: "investor", name: "Investor" },
+  { id: "mentor", name: "Mentor" },
 ];
 
 // Mock API function to fetch mentors
@@ -240,7 +240,7 @@ const MentorMatching = () => {
                     name="funding"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Minimum Funding History ($)</FormLabel>
+                        <FormLabel>Funding Needed/Available($)</FormLabel>
                         <FormControl>
                           <Input 
                             type="number" 
