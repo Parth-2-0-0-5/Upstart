@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Navigation = () => {
@@ -24,9 +25,9 @@ const Navigation = () => {
     >
       <div className="app-container flex items-center justify-between">
         <div className="flex items-center">
-          <a href="#" className="text-xl font-medium text-foreground">
+          <Link to="/" className="text-xl font-medium text-foreground">
             NexusAI
-          </a>
+          </Link>
         </div>
 
         <nav className="hidden md:flex space-x-8">
@@ -48,9 +49,12 @@ const Navigation = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <a href="#cta" className="btn-primary">
+          <Link to="/login" className="text-sm font-medium text-foreground/80 hover:text-foreground">
+            Sign In
+          </Link>
+          <Link to="/register" className="btn-primary">
             Get Started
-          </a>
+          </Link>
         </div>
 
         <button
@@ -103,14 +107,21 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <div className="pt-6">
-              <a
-                href="#cta"
+            <div className="pt-6 space-y-4">
+              <Link
+                to="/login"
+                className="block w-full text-center text-foreground font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
                 className="btn-primary w-full justify-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         </div>
