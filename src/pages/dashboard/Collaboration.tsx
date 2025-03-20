@@ -142,7 +142,7 @@ const Collaboration = () => {
               <SelectValue placeholder="Filter by Industry" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Industries</SelectItem>
+              <SelectItem value="all">All Industries</SelectItem>
               {industries.map(industry => (
                 <SelectItem key={industry} value={industry}>{industry}</SelectItem>
               ))}
@@ -154,7 +154,7 @@ const Collaboration = () => {
               <SelectValue placeholder="Filter by Role" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Roles</SelectItem>
+              <SelectItem value="all">All Roles</SelectItem>
               {roles.map(role => (
                 <SelectItem key={role} value={role}>{role}</SelectItem>
               ))}
