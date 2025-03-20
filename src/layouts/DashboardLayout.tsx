@@ -40,7 +40,7 @@ const DashboardLayout = () => {
         <div className="flex flex-col h-full p-4">
           <div className="flex items-center justify-between mb-8 pt-4">
             <a href="/" className="text-xl font-medium text-foreground">
-              NexusAI
+              Upstart
             </a>
             <button 
               onClick={() => setSidebarOpen(false)}

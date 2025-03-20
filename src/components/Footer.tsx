@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2">
             <a href="#" className="text-xl font-medium text-foreground mb-4 inline-block">
-              NexusAI
+              Upstart
             </a>
             <p className="text-foreground/70 max-w-xs mb-6">
               AI-powered networking and growth tools for modern entrepreneurs.
@@ -72,7 +72,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-foreground/60 mb-4 md:mb-0">
-            © {new Date().getFullYear()} NexusAI. All rights reserved.
+            © {new Date().getFullYear()} Upstart. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
