@@ -72,7 +72,7 @@ const DashboardLayout = () => {
             <div className="flex items-center px-3 py-2">
               <div className="h-8 w-8 rounded-full bg-primary/10 mr-3"></div>
               <div>
-                <p className="text-sm font-medium">John Doe</p>
+                <p className="text-sm font-medium">Krishna Garg</p>
                 <p className="text-xs text-muted-foreground">Entrepreneur</p>
               </div>
             </div>

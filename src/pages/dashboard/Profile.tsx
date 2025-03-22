@@ -14,16 +14,16 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/hooks/use-toast';
 import { Check, Pencil, Camera, User, Link as LinkIcon, Mail, Phone, Briefcase, MapPin, Upload } from 'lucide-react';
 
-// Mock user data
+// Mock user data - Updated the name to Krishna Garg
 const mockUser = {
   id: 1,
-  name: 'John Doe',
-  email: 'john.doe@example.com',
+  name: 'Krishna Garg',
+  email: 'krishna.garg@example.com',
   phone: '+1 (555) 123-4567',
   roles: ['Entrepreneur', 'Mentor'],
   industry: 'SaaS',
   location: 'San Francisco, CA',
-  linkedin: 'linkedin.com/in/johndoe',
+  linkedin: 'linkedin.com/in/krishnagarg',
   bio: 'Passionate entrepreneur with 10+ years of experience in building and scaling SaaS products. I specialize in product development, team leadership, and go-to-market strategies.',
   expertise: ['Product Development', 'Team Leadership', 'Go-to-Market Strategy'],
   interests: ['AI & Machine Learning', 'Remote Team Management', 'Sustainable Growth'],
